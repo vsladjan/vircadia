@@ -276,7 +276,10 @@ jobs:
       if: startsWith(matrix.os, 'ubuntu') && startsWith(matrix.build_type, 'full')
       shell: bash
       working-directory: ${{runner.workspace}}/source/pkg-scripts
-      run: ./make-docker-server
+      run: |
+        ls -la
+        pwd
+        ./make-docker-server
 
     # - name: Upload full build
     #   if: matrix.build_type == 'full' && (startsWith(matrix.os, 'windows') || startsWith(matrix.os, 'macOS'))

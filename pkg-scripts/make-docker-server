@@ -9,6 +9,7 @@ GITDATE=`git -C $VIRCADIA/source log -n 1 --format=raw | grep author | cut -d">"
 GITCOMMIT=`git -C $VIRCADIA/source rev-parse HEAD | cut -c 1-7`
 
 sudo apt-get install chrpath binutils
+echo "Hello"
 
 DOCK_BUILD_ROOT=temp-make-dock
 rm -r temp-make-dock
