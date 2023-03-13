@@ -272,6 +272,12 @@ jobs:
       working-directory: ${{runner.workspace}}/build
       run: cat ./_CPack_Packages/win64/NSIS/NSISOutput.log
 
+    - name: Build docker server
+      if: startsWith(matrix.os, 'ubuntu') && startsWith(matrix.build_type, 'full')
+      shell: bash
+      working-directory: ${{runner.workspace}}/source/pkg-scripts
+      run: ./make-docker-server
+
     # - name: Upload full build
     #   if: matrix.build_type == 'full' && (startsWith(matrix.os, 'windows') || startsWith(matrix.os, 'macOS'))
     #   uses: actions/upload-artifact@v3
