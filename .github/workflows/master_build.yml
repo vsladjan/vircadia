@@ -187,6 +187,14 @@ jobs:
       shell: bash
       run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DVCPKG_BUILD_TYPE=release -DCLIENT_ONLY:BOOLEAN=$CLIENT_ONLY -DBYPASS_SIGNING:BOOLEAN=TRUE $CMAKE_EXTRA
 
+    - name: Build docker server test
+      if: startsWith(matrix.os, 'ubuntu') && startsWith(matrix.build_type, 'full')
+      shell: bash
+      working-directory: ${{runner.workspace}}/pkg-scripts
+      run: |
+        ls -la
+        pwd
+      
     - name: Build Domain Server
       working-directory: ${{runner.workspace}}/build
       shell: bash
@@ -275,7 +283,7 @@ jobs:
     - name: Build docker server
       if: startsWith(matrix.os, 'ubuntu') && startsWith(matrix.build_type, 'full')
       shell: bash
-      working-directory: ${{runner.workspace}}/source/pkg-scripts
+      working-directory: ${{runner.workspace}}/pkg-scripts
       run: |
         ls -la
         pwd
