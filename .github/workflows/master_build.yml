@@ -190,9 +190,8 @@ jobs:
     - name: Build docker server test
       if: startsWith(matrix.os, 'ubuntu') && startsWith(matrix.build_type, 'full')
       shell: bash
-      working-directory: ${{runner.workspace}}/pkg-scripts
       run: |
-        ls -la
+        ls -la ./pkg-scripts
         pwd
       
     - name: Build Domain Server
