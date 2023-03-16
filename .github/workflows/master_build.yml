@@ -283,7 +283,10 @@ jobs:
       if: startsWith(matrix.os, 'ubuntu') && startsWith(matrix.build_type, 'full')
       shell: bash
       run: |
+        pwd
         ls -la
+        ls -la ..
+        ls -la ../..
         ./pkg-scripts/make-docker-server
 
     # - name: Upload full build
