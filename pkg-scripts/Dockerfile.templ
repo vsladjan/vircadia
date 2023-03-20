@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 ARG DEPENDS
 ARG GITSRC
 ARG GITDATE
@@ -13,6 +13,11 @@ EXPOSE 40100/udp 40101/udp 40102/udp
 
 # expose ports for assignment client
 EXPOSE 48000/udp 48001/udp 48002/udp 48003/udp 48004/udp 48005/udp 48006/udp
+
+# needed for installing qt packages
+RUN apt-get update -y && \
+	apt-get -y install software-properties-common && \
+	add-apt-repository ppa:beineri/opt-qt-5.15.2-focal
 
 RUN echo UTC >/etc/timezone
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
